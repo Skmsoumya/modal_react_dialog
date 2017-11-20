@@ -11,14 +11,45 @@ class App extends Component {
 			modalOpened: false
 		};
 
-		this._toggleModalDialog = this._toggleModalDialog.bind(this);
+		/*
+			Bind the current scope to callback functions
+		*/
+		this.toggleModalDialog = this.toggleModalDialog.bind(this);
+		this.dialogOk = this.dialogOk.bind(this);
+		this.dialogClose = this.dialogClose.bind(this);
 	}
 
-	_toggleModalDialog() {
+	/*
+		Toggle to open and close the dailog
+	*/
+	toggleModalDialog() {
 		this.setState({
 			modalOpened: !this.state.modalOpened
 		});
 	}
+
+	/*
+		On closing the dialog from the modal component
+	*/
+	dialogClose() {
+		/*
+			Do something when the user closes the dialog
+		*/
+		console.log("dialog is closed");
+		this.toggleModalDialog();
+	}
+
+	/*
+		On clicking ok
+	*/
+	dialogOk() {
+		/*
+			Do somthing if the user click confirms the dialog
+		*/
+		console.log("dialog is okayed");
+		this.toggleModalDialog();
+	}
+
 
 	render() {
 		return (
@@ -28,10 +59,12 @@ class App extends Component {
 						To open the modal dialog click the open button below.
 					</h3>
 
-					<button onClick={this._toggleModalDialog}>Open Modal Dialog</button>
+					<button onClick={this.toggleModalDialog}>Open Modal Dialog</button>
 				</div>
 
-				<ModalDialog dialogOpened={this.state.modalOpened}></ModalDialog>
+				<ModalDialog 	dialogOpened={this.state.modalOpened} 
+								onDialogClose={this.dialogClose}
+								onDialogOk={this.dialogOk}></ModalDialog>
 			</div>
 		);
 	}
