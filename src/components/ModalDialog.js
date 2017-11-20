@@ -6,7 +6,7 @@ class ModalDialog extends Component {
 
 		/*
 			Check if the dialogOpened property is true.
-			If true render the dialog elce render nothing.
+			If true render the dialog else render nothing.
 		*/
 		if(!this.props.dialogOpened) {
 			return null;
@@ -14,7 +14,8 @@ class ModalDialog extends Component {
 
 
 		return (
-			<div className="backdrop">
+			<div className="dialog">
+				<div className="backdrop" onClick={this.props.onDialogClose}></div>
 				<div className="modalDialog">
 					This is a modal dialog
 

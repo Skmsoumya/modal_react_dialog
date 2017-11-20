@@ -25,6 +25,9 @@ For closing the dialog we have a problem. We cannot have a button that closes th
 
 The soluton to this is to pass a callback function as a property to the modal component. 
 
+** For closing the dialog when clicking on the backdrop**
+with the current layout of the component it will be a problem when we add a click listiner to the backdrop element directly. Any interaction with the dialog will result in closing of the modal dialog. the layout of the component has to be changed.
+
 
 
 
