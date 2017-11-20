@@ -4,22 +4,37 @@ import './App.css';
 import ModalDialog from './components/ModalDialog.js';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+	constructor(props) {
+		super(props);
 
+		this.state = {
+			modalOpened: false
+		};
 
-        <ModalDialog></ModalDialog>
-      </div>
-    );
-  }
+		this._toggleModalDialog = this._toggleModalDialog.bind(this);
+	}
+
+	_toggleModalDialog() {
+		this.setState({
+			modalOpened: !this.state.modalOpened
+		});
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<div>
+					<h3>
+						To open the modal dialog click the open button below.
+					</h3>
+
+					<button onClick={this._toggleModalDialog}>Open Modal Dialog</button>
+				</div>
+
+				<ModalDialog dialogOpened={this.state.modalOpened}></ModalDialog>
+			</div>
+		);
+	}
 }
 
 export default App;

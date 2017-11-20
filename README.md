@@ -8,7 +8,15 @@ Clicking on the modal dialog's backdrop should close it.
 
 The dialog should have two buttons close and ok. Two respective callback functions can be passed to the dialog element as properties, one for the cancel and another for ok, which are to be called when the respective user action takes place.
 
+### Initial thoughts on how to proceed with dialog opening and closing:
 
+The first goal is to open the modal dialog when a external button is clicked or an change of state to the application. 
+
+From what I understand about react is that the state of the application dictates what the resulting ui of the application should be. In the case of other (polymer) frameworks that I am familiar with I would resort to calling the child components methods (in this case to open the dialog) directly from the parent compont, but in case of react I think the approach should be to change a property related to the element, lets called that property "dialogOpened". 
+
+When dialog "dialogOpened" property is set to true the dialog should be visible and vise versa. We will set the value of this property from the parent component and the state of the dialog will be maintained from the parent component. 
+
+For actual showing and hiding of the dialog we can check in the render method if the dialog state is opened and close and return the dialog or null respectivelly. 
 
 
 
