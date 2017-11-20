@@ -14,21 +14,24 @@ The first goal is to open the modal dialog when a external button is clicked or 
 
 From what I understand about react is that the state of the application dictates what the resulting ui of the application should be. In the case of other (polymer) frameworks that I am familiar with I would resort to calling the child components methods (in this case to open the dialog) directly from the parent compont, but in case of react I think the approach should be to change a property related to the element, lets called that property "dialogOpened". 
 
-**for opening the dialog**
+**for opening the dialog:**
 
 When dialog "dialogOpened" property is set to true the dialog should be visible and vise versa. We will set the value of this property from the parent component and the state of the dialog will be maintained from the parent component. 
 
 For actual showing and hiding of the dialog we can check in the render method if the dialog state is opened and close and return the dialog or null respectivelly. 
 
-**For closing the dialog**
+**For closing the dialog:**
+
 For closing the dialog we have a problem. We cannot have a button that closes the dialog from with in the dialog component and update the property of the modal component. Any change to the property of the modal dialog has to be proagated from the parent component. 
 
 The soluton to this is to pass a callback function as a property to the modal component. 
 
-** For closing the dialog when clicking on the backdrop **
+** For closing the dialog when clicking on the backdrop: **
+
 with the current layout of the component it will be a problem when we add a click listiner to the backdrop element directly. Any interaction with the dialog will result in closing of the modal dialog. the layout of the component has to be changed.
 
-** Adding custom header and body to the dialog **
+** Adding custom header and body to the dialog: **
+
 We have to pass custom header and body properties to the dialog. The children component which has to be the header should have a attribute of "isHeader". Rest of teh child components will be added to the body.
 
 
