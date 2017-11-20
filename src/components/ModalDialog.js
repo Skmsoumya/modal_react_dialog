@@ -12,12 +12,40 @@ class ModalDialog extends Component {
 			return null;
 		}
 
+		let headerChildren = "Headers will go here. Pass a child component with isHeader Attribute";
+		let bodyChildren = "Body child elements will go here.";
+		if(this.props.children) {
+			headerChildren = [];
+			bodyChildren = [];
+
+			for(let i=0; i< this.props.children.length; i++) {
+				let child = this.props.children[i];
+				if(child.props && child.props.isheader) {
+					headerChildren.push(child);
+				} 
+				else {
+					bodyChildren.push(child);
+				}
+			};
+
+			console.log(headerChildren, bodyChildren);
+		}
 
 		return (
 			<div className="dialog">
 				<div className="backdrop" onClick={this.props.onDialogClose}></div>
 				<div className="modalDialog">
-					This is a modal dialog
+					<div className="Header">
+						{
+							headerChildren
+						}
+					</div>
+
+					<div className="Body">
+						{
+							bodyChildren
+						}
+					</div>
 
 					<div className="ButtonsHolder">
 						<button onClick={this.props.onDialogClose}>Close</button>

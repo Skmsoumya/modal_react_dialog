@@ -29,3 +29,9 @@
 .ButtonsHolder {
 	padding-top: 30px;
 }
+
+.Header {
+	padding: 30px 20px;
+	text-align: center;
+	background: #00b28c;
+}

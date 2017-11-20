@@ -64,7 +64,13 @@ class App extends Component {
 
 				<ModalDialog 	dialogOpened={this.state.modalOpened} 
 								onDialogClose={this.dialogClose}
-								onDialogOk={this.dialogOk}></ModalDialog>
+								onDialogOk={this.dialogOk}>
+					<div isheader="true">This is the header passed from parent component!</div>
+					<div isheader="true">This is also a header</div>
+
+					<h2>This is the body tag</h2>
+					<p>This is the body of the modal dialog passed from parent component</p>
+				</ModalDialog>
 			</div>
 		);
 	}
